@@ -47,6 +47,7 @@ import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenRecordTile;
+import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.SoundTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
@@ -98,6 +99,7 @@ public class QSFactoryImpl implements QSFactory {
 
      // Additions
      private final Provider<DataSwitchTile> mDataSwitchTileProvider;
+     private final Provider<SyncTile> mSyncTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
 
@@ -131,7 +133,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<HeadsUpTile> headsUpTileProvider,
             Provider<HWKeysTile> hWKeysTileProvider,
             Provider<UsbTetherTile> usbTetherTileProvider,
-            Provider<DataSwitchTile> dataSwitchTileProvider) {
+            Provider<DataSwitchTile> dataSwitchTileProvider,
+            Provider<SyncTile> syncTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -162,6 +165,7 @@ public class QSFactoryImpl implements QSFactory {
         mHWKeysTileProvider = hWKeysTileProvider;
         mUsbTetherTileProvider = usbTetherTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
+        mSyncTileProvider = syncTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -231,6 +235,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mUsbTetherTileProvider.get();
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
+            case "sync":
+                return mSyncTileProvider.get();
         }
 
         // Custom tiles
