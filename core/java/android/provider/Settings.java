@@ -4821,6 +4821,30 @@ public final class Settings {
          * @hide
          */
         public static final String MULTI_AUDIO_FOCUS_ENABLED = "multi_audio_focus_enabled";
+		
+		/**
+         * How many rows to show in the qs panel when in portrait
+         * @hide
+         */
+        public static final String QS_ROWS_PORTRAIT = "qs_rows_portrait";
+
+        /**
+         * How many rows to show in the qs panel when in landscape
+         * @hide
+         */
+        public static final String QS_ROWS_LANDSCAPE = "qs_rows_landscape";
+
+        /**
+         * How many columns to show in the qs panel when in portrait
+         * @hide
+         */
+        public static final String QS_COLUMNS_PORTRAIT = "qs_columns_portrait";
+
+        /**
+         * How many columns to show in the qs panel when in landscape
+         * @hide
+         */
+        public static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
 
         /** some devices have a extra hw button e.g. n3 on the back on the
          * fingerprint sensor. allow mapping button to key
