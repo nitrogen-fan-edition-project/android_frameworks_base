@@ -41,6 +41,7 @@ import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.HWKeysTile;
+import com.android.systemui.qs.tiles.LiveDisplayTile;
 import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.LteTile;
 import com.android.systemui.qs.tiles.NfcTile;
@@ -99,11 +100,12 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<HWKeysTile> mHWKeysTileProvider;
     private final Provider<UsbTetherTile> mUsbTetherTileProvider;
 
-     // Additions
-     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
-     private final Provider<CompassTile> mCompassTileProvider;
-     private final Provider<SyncTile> mSyncTileProvider;
+    // Additions
+    private final Provider<DataSwitchTile> mDataSwitchTileProvider;
+    private final Provider<CompassTile> mCompassTileProvider;
+    private final Provider<SyncTile> mSyncTileProvider;
     private final Provider<AODTile> mAODTileProvider;
+    private final Provider<LiveDisplayTile> mLiveDisplayTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
 
@@ -140,7 +142,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CompassTile> compassTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<SyncTile> syncTileProvider,
-            Provider<AODTile> aodTileProvider) {
+            Provider<AODTile> aodTileProvider,
+            Provider<LiveDisplayTile> liveDisplayTileProvider) ) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -174,6 +177,7 @@ public class QSFactoryImpl implements QSFactory {
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mSyncTileProvider = syncTileProvider;
         mAODTileProvider = aodTileProvider;
+        mLiveDisplayTileProvider = liveDisplayTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -249,6 +253,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mCompassTileProvider.get();
             case "aod":
                 return mAODTileProvider.get();
+            case "livedisplay":
+                return mLiveDisplayTileProvider.get();
         }
 
         // Custom tiles
