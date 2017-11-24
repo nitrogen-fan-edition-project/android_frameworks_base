@@ -214,6 +214,7 @@ import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.internal.util.nitrogen.NitrogenUtils;
 import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.internal.util.ArrayUtils;
+import com.android.internal.util.custom.LineageButtons;
 import com.android.server.ExtconStateObserver;
 import com.android.server.ExtconUEventObserver;
 import com.android.server.GestureLauncherService;
@@ -652,6 +653,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private volatile int mTopFocusedDisplayId = INVALID_DISPLAY;
 
     private int mPowerButtonSuppressionDelayMillis = POWER_BUTTON_SUPPRESSION_DELAY_DEFAULT_MILLIS;
+
+    private LineageButtons mLineageButtons;
 
     // Power long press action saved on key down that should happen on key up
     private int mResolvedLongPressOnPowerBehavior;
@@ -5398,6 +5401,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 mKeyguardDelegate.onBootCompleted();
             }
         }
+
+        mLineageButtons = new LineageButtons(mContext);
 
         mAutofillManagerInternal = LocalServices.getService(AutofillManagerInternal.class);
     }
