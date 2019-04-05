@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- The minimum bottom margin of the keyguard security container -->
-    <dimen name="kg_security_container_min_bottom_margin">0dp</dimen>
-
     <!-- Clocks -->
     <dimen name="binary_clock_dot_size">8dp</dimen>
     <dimen name="binary_clock_stroke_width">2dp</dimen>
@@ -19,4 +16,7 @@
 
     <!-- Padding added to keyguard status area when Type clock is in use -->
     <dimen name="keyguard_status_area_typeclock_padding">32dp</dimen>
+
+    <!-- The minimum bottom margin of the keyguard security container -->
+    <dimen name="kg_security_container_min_bottom_margin">0dp</dimen>
 </resources>
