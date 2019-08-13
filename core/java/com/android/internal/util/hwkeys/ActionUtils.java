@@ -20,11 +20,15 @@
 
 package com.android.internal.util.hwkeys;
 
+import android.app.ActivityManager;
+import android.app.ActivityOptions;
+import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -39,16 +43,23 @@ import android.hardware.SensorManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
+import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemClock;
 import android.os.SystemProperties;
+import android.os.Vibrator;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.util.Log;
 import android.view.Display;
+import android.provider.MediaStore;
 import android.view.IWindowManager;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +71,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.util.hwkeys.ActionConstants.Defaults;
@@ -83,6 +95,12 @@ public final class ActionUtils {
     public static final String BOOL = "bool";
     public static final String STRING = "string";
     public static final String ANIM = "anim";
+    public static final String INTENT_SCREENSHOT = "action_take_screenshot";
+    public static final String INTENT_REGION_SCREENSHOT = "action_take_region_screenshot";
+
+    private static final String TAG = ActionUtils.class.getSimpleName();
+
+
 
     // 10 inch tablets
     public static boolean isXLargeScreen() {
@@ -758,4 +776,20 @@ public final class ActionUtils {
         return d;
         */
     }
+
+   
+
+    // Screenshot
+    public static void takeScreenshot(boolean full) {
+        IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+        try {
+//            wm.sendCustomAction(new Intent(INTENT_SCREENSHOT));
+            wm.takeAlternativeScreenshot();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+   
+
 }
