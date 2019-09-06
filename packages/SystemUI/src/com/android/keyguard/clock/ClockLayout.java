@@ -37,6 +37,7 @@ public class ClockLayout extends FrameLayout {
      * Clock face views.
      */
     private View mAnalogClock;
+    private View mTypeClock;
 
     /**
      * Pixel shifting amplitudes used to prevent screen burn-in.
@@ -64,6 +65,8 @@ public class ClockLayout extends FrameLayout {
         super.onFinishInflate();
         mAnalogClock = findViewById(R.id.analog_clock);
  
+        mTypeClock = findViewById(R.id.type_clock);
+
         // Get pixel shifting X, Y amplitudes from resources.
         Resources resources = getResources();
         mBurnInPreventionOffsetX = resources.getDimensionPixelSize(
@@ -111,5 +114,10 @@ public class ClockLayout extends FrameLayout {
         }
 
 
+        // Put the typographic clock part way down the screen.
+        if (mTypeClock != null) {
+            mTypeClock.setX(offsetX);
+            mTypeClock.setY(0.2f * getHeight() + offsetY);
+        }
     }
 }
