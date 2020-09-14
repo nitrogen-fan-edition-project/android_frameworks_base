@@ -148,4 +148,7 @@
     <string name="accessibility_quick_settings_reading_mode_off">Reading mode off.</string>
     <string name="accessibility_quick_settings_reading_mode_changed_on">Reading mode turned on.</string>
     <string name="accessibility_quick_settings_reading_mode_changed_off">Reading mode turned off.</string>    
+
+   <!-- Change clockface -->
+    <string name="change_clock_face">Swipe to change the clock face</string>
 </resources>
