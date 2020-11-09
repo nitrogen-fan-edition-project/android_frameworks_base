@@ -35,7 +35,19 @@ public class PixelPropsUtils {
             "com.google.android.apps.turbo",
             "com.google.android.apps.wallpaper",
             "com.google.android.apps.maps",
-            "com.google.android.gms"
+            "com.google.android.gms",
+            "com.breel.wallpapers20",
+            "com.google.android.apps.customization.pixel",
+            "com.google.android.apps.maps",
+            "com.google.android.apps.photos",
+            "com.google.android.apps.safetyhub",
+            "com.google.android.apps.subscriptions.red",
+            "com.google.android.apps.turbo",
+            "com.google.android.apps.wallpaper",
+            "com.google.android.apps.wallpaper.pixel",
+            "com.google.android.googlequicksearchbox",
+            "com.google.pixel.dynamicwallpapers",
+            "com.google.pixel.livewallpaper"
     };
 
     static {
@@ -64,10 +76,7 @@ public class PixelPropsUtils {
                 setPropValue(key, value);
             }
         }
-        // Set proper indexing fingerprint
-        if (packageName.equals("com.google.android.settings.intelligence")){
-            setPropValue("FINGERPRINT", Build.DATE);
-        }
+
     }
 
     private static void setPropValue(String key, Object value){
