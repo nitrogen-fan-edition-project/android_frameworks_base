@@ -88,4 +88,7 @@
     <string name="animation_grow_shrink_right">Grow in (Right)</string>
     <string name="animation_random">Random</string>
     <string name="action_null">Blank</string>
+
+    <!-- -1 means use same as config_screenBrightnessDoze -->
+    <integer name="config_screenBrightnessPulse">-1</integer>
 </resources>
