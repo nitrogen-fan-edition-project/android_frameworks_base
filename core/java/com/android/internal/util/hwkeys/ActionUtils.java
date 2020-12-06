@@ -20,6 +20,9 @@
 
 package com.android.internal.util.hwkeys;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+import static android.content.Context.VIBRATOR_SERVICE;
+
 import android.app.ActivityManager;
 import android.app.ActivityOptions;
 import android.app.NotificationManager;
@@ -889,6 +892,11 @@ public final class ActionUtils {
         FireActions.clearAllNotifications();
     }
 
+    // Start Assistant
+    public static void startAssist() {
+        FireActions.startAssist();
+    }
+
     private static final class FireActions {
         private static IStatusBarService mStatusBarService = null;
         private static IStatusBarService getStatusBarService() {
@@ -920,6 +928,15 @@ public final class ActionUtils {
                 } catch (RemoteException e) {
                     // do nothing.
                 }
+            }
+        }
+
+        public static void startAssist() {
+            IStatusBarService service = getStatusBarService();
+            if (service != null) {
+                try {
+                    service.startAssist(new Bundle());
+                } catch (RemoteException e) {}
             }
         }
 
