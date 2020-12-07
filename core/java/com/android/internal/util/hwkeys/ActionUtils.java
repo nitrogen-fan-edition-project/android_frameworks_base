@@ -80,6 +80,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.util.hwkeys.ActionConstants.Defaults;
 import com.android.internal.util.hwkeys.Config.ActionConfig;
 import com.android.internal.util.hwkeys.Config.ButtonConfig;
+import android.widget.Toast;
 
 import com.android.internal.R;
 
@@ -809,7 +810,28 @@ public final class ActionUtils {
         */
     }
 
-   
+    // Trigger Hush Mute mode
+    public static void triggerHushMute(Context context) {
+        // We can't call AudioService#silenceRingerModeInternal from here, so this is a partial copy of it
+        int silenceRingerSetting = Settings.Secure.getIntForUser(context.getContentResolver(),
+                Settings.Secure.VOLUME_HUSH_GESTURE, Settings.Secure.VOLUME_HUSH_OFF,
+                UserHandle.USER_CURRENT);
+
+        int ringerMode;
+        int toastText;
+        if (silenceRingerSetting == Settings.Secure.VOLUME_HUSH_VIBRATE) {
+            ringerMode = AudioManager.RINGER_MODE_VIBRATE;
+            toastText = com.android.internal.R.string.volume_dialog_ringer_guidance_vibrate;
+        } else {
+            // VOLUME_HUSH_MUTE and VOLUME_HUSH_OFF
+            ringerMode = AudioManager.RINGER_MODE_SILENT;
+            toastText = com.android.internal.R.string.volume_dialog_ringer_guidance_silent;
+        }
+        AudioManager audioMan = (AudioManager)
+                context.getSystemService(Context.AUDIO_SERVICE);
+        audioMan.setRingerModeInternal(ringerMode);
+        Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
+    }   
 
     // Screenshot
     public static void takeScreenshot(boolean full) {
