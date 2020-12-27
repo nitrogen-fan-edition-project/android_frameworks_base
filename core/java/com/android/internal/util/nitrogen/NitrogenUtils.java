@@ -16,6 +16,7 @@
 
 package com.android.internal.util.nitrogen;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -42,6 +43,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.os.BatteryManager;
+import android.hardware.fingerprint.FingerprintManager;
 
 import com.android.internal.statusbar.IStatusBarService;
 

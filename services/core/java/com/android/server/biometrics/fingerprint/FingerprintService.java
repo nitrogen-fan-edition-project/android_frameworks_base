@@ -67,6 +67,7 @@ import com.android.internal.custom.app.LineageContextConstants;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.util.DumpUtils;
 import com.android.internal.widget.LockPatternUtils;
+import com.android.internal.util.nitrogen.FodUtils;
 import com.android.server.SystemServerInitThreadPool;
 import com.android.server.biometrics.AuthenticationClient;
 import com.android.server.biometrics.BiometricServiceBase;
@@ -895,7 +896,11 @@ public class FingerprintService extends BiometricServiceBase {
         mLockPatternUtils = new LockPatternUtils(context);
 
         PackageManager packageManager = context.getPackageManager();
-        mHasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
+        if (packageManager.hasSystemFeature(LineageContextConstants.Features.FOD) || FodUtils.hasFodSupport(context)){
+            mHasFod = true;
+        }else{
+            mHasFod = false;
+        }
     }
 
     @Override
