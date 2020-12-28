@@ -74,8 +74,8 @@ final class AssistHandleReminderExpBehavior implements BehaviorController {
             Settings.Secure.getUriFor(Settings.Secure.ASSIST_HANDLES_LEARNING_EVENT_COUNT);
     private static final String LEARNED_HINT_LAST_SHOWN_KEY =
             "reminder_exp_learned_hint_last_shown";
-    private static final long DEFAULT_LEARNING_TIME_MS = TimeUnit.DAYS.toMillis(2);
-    private static final int DEFAULT_LEARNING_COUNT = 2;
+    private static final long DEFAULT_LEARNING_TIME_MS = TimeUnit.DAYS.toMillis(1);
+    private static final int DEFAULT_LEARNING_COUNT = 1;
     private static final long DEFAULT_SHOW_AND_GO_DELAYED_SHORT_DELAY_MS = 150;
     private static final long DEFAULT_SHOW_AND_GO_DELAYED_LONG_DELAY_MS =
             TimeUnit.SECONDS.toMillis(1);
