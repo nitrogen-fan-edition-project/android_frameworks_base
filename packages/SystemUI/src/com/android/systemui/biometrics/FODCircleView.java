@@ -29,7 +29,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.hardware.biometrics.BiometricSourceType;
-import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -224,7 +223,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         public void onScreenTurnedOn() {
             if (!mFodGestureEnable && mUpdateMonitor.isFingerprintDetectionRunning()) {
                 show();
-                triggerFodIconAnimation();
             }
             if (mFodGestureEnable && mPressPending) {
                 mHandler.post(() -> showCircle());
@@ -644,12 +642,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     @Override
     public void onOverlayChanged() {
         updateCutoutFlags();
-    }
-
-    public void triggerFodIconAnimation() {
-        AnimatedVectorDrawable fodIconAnimatedVectorDrawable = (AnimatedVectorDrawable) mContext.getDrawable(R.drawable.fod_icon_default_animated);
-        setImageDrawable(fodIconAnimatedVectorDrawable);
-        fodIconAnimatedVectorDrawable.start();
     }
 
     private void updateCutoutFlags() {
