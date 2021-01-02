@@ -79,6 +79,7 @@ public class DragDownHelper implements Gefingerpoken {
         mDragDownCallback = dragDownCallback;
         mHost = host;
         mFalsingManager = falsingManager;
+        mDoubleTapTimeout = ViewConfiguration.get(context).getDoubleTapTimeout();
         mStatusBarHeaderHeight = context
                 .getResources().getDimensionPixelSize(R.dimen.status_bar_header_height_keyguard);
         mGoToSleep = new Runnable() {

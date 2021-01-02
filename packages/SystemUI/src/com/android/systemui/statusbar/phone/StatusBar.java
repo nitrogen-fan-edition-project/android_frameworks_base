@@ -663,6 +663,31 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private ActivityIntentHelper mActivityIntentHelper;
 
+    private class CustomSettingsObserver extends ContentObserver {
+        CustomSettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.DOUBLE_TAP_SLEEP_GESTURE),
+                    false, this, UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            update();
+        }
+
+        public void update() {
+            if (mNotificationShadeWindowViewController != null) {
+                mNotificationShadeWindowViewController.updateSettings();
+            }
+        }
+    }
+
+    private CustomSettingsObserver mCustomSettingsObserver;
+
     /**
      * Public constructor for StatusBar.
      *
@@ -1026,6 +1051,10 @@ public class StatusBar extends SystemUI implements DemoMode,
                         }
                     }
                 }, OverlayPlugin.class, true /* Allow multiple plugins */);
+
+        mCustomSettingsObserver = new CustomSettingsObserver(mHandler);
+        mCustomSettingsObserver.observe();
+        mCustomSettingsObserver.update();
     }
 
     // ================================================================================
@@ -3965,7 +3994,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             setHeadsUpStoplist();
             setHeadsUpBlacklist();
             updateNavigationBar(false);
-            setStatusDoubleTapToSleep();
         }
     }
 
@@ -3997,12 +4025,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         mShowNavBar = showNavBar;
     }
 
-    private void setStatusDoubleTapToSleep() {
-        if (mNotificationShadeWindowViewController != null) {
-            mNotificationShadeWindowViewController.updateSettings();
-        }
-    }
-
+   
     public int getWakefulnessState() {
         return mWakefulnessLifecycle.getWakefulness();
     }
