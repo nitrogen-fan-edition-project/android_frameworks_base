@@ -700,7 +700,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
             } else if (GLOBAL_ACTION_KEY_RESTART.equals(actionKey)) {
                 addIfShouldShowAction(tempActions, restartAction);
                 // if Restart action is available, add advanced restart actions too
-                //addIfShouldShowAction(tempActions, restartBootloaderAction);
+                addIfShouldShowAction(tempActions, restartBootloaderAction);
                 addIfShouldShowAction(tempActions, restartRecoveryAction);
                 addIfShouldShowAction(tempActions, restartSystemUiAction);
             } else if (GLOBAL_ACTION_KEY_SCREENSHOT.equals(actionKey)) {
@@ -731,7 +731,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
             tempActions.remove(restartSystemUiAction);
             mPowerItems.add(shutdownAction); // will be removed later if needed
             mPowerItems.add(restartAction);
-            mPowerItems.add(restartBootloaderAction);
+            //mPowerItems.add(restartBootloaderAction);
             mPowerItems.add(restartRecoveryAction);
             mPowerItems.add(restartSystemUiAction);
 
@@ -2382,7 +2382,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
                             | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                             | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
                             | WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-            window.setType(WindowManager.LayoutParams.TYPE_DISPLAY_OVERLAY);
+            window.setType(WindowManager.LayoutParams.TYPE_VOLUME_OVERLAY);
             window.getAttributes().setFitInsetsTypes(0 /* types */);
             setTitle(R.string.global_actions);
 
