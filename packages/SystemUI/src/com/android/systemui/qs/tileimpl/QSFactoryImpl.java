@@ -56,6 +56,7 @@ import com.android.systemui.qs.tiles.UserTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.util.leak.GarbageMonitor;
+import com.android.systemui.qs.tiles.CompassTile;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -99,6 +100,7 @@ public class QSFactoryImpl implements QSFactory {
 
      // Additions
      private final Provider<DataSwitchTile> mDataSwitchTileProvider;
+     private final Provider<CompassTile> mCompassTileProvider;
      private final Provider<SyncTile> mSyncTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
@@ -133,6 +135,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<HeadsUpTile> headsUpTileProvider,
             Provider<HWKeysTile> hWKeysTileProvider,
             Provider<UsbTetherTile> usbTetherTileProvider,
+	    Provider<CompassTile> compassTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<SyncTile> syncTileProvider) {
         mQsHostLazy = qsHostLazy;
@@ -164,6 +167,7 @@ public class QSFactoryImpl implements QSFactory {
         mHeadsUpTileProvider = headsUpTileProvider;
         mHWKeysTileProvider = hWKeysTileProvider;
         mUsbTetherTileProvider = usbTetherTileProvider;
+	mCompassTileProvider = compassTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mSyncTileProvider = syncTileProvider;
     }
@@ -237,6 +241,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mDataSwitchTileProvider.get();
             case "sync":
                 return mSyncTileProvider.get();
+	    case "compass":
+                return mCompassTileProvider.get();
         }
 
         // Custom tiles
