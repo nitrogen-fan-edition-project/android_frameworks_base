@@ -232,6 +232,7 @@ oneway interface IStatusBar
      * Nitrogen
      */
     void toggleCameraFlash();
+    void killForegroundApp();
 
     /**
      *  Used to show or hide in display fingerprint view.

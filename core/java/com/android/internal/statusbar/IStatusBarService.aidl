@@ -153,6 +153,7 @@ interface IStatusBarService
      * Nitrogen
      */
     void toggleCameraFlash();
+    void killForegroundApp();
     void toggleRecentApps();
     void toggleSplitScreen();
     void preloadRecentApps();

@@ -29,6 +29,7 @@ import com.android.systemui.statusbar.NotificationRemoteInputManager;
 import com.android.systemui.statusbar.notification.logging.NotificationLogger;
 import com.android.systemui.statusbar.notification.interruption.NotificationInterruptStateProvider;
 import com.android.systemui.statusbar.NotificationViewHierarchyManager;
+import com.android.systemui.statusbar.policy.TaskHelper;
 import com.android.systemui.keyguard.KeyguardViewMediator;
 import android.util.DisplayMetrics;
 import com.android.internal.logging.MetricsLogger;
@@ -165,6 +166,7 @@ public class StatusBarGoogle extends StatusBar {
             Optional<Divider> dividerOptional,
             LightsOutNotifController lightsOutNotifController,
             FlashlightController flashlightController,
+            TaskHelper taskHelper,
             StatusBarNotificationActivityStarter.Builder
                     statusBarNotificationActivityStarterBuilder,
             ShadeController shadeController,
@@ -245,6 +247,7 @@ public class StatusBarGoogle extends StatusBar {
             dividerOptional,
             lightsOutNotifController,
             flashlightController,
+            taskHelper,
             statusBarNotificationActivityStarterBuilder,
             shadeController,
             superStatusBarViewFactory,
