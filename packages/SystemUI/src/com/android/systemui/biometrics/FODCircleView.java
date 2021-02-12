@@ -63,7 +63,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class FODCircleView extends ImageView implements ConfigurationListener {
-    private static final int FADE_ANIM_DURATION = 250;
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
 
     private final int mPositionX;
@@ -82,7 +81,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     private int mColorBackground;
     private int mDreamingOffsetY;
 
-    private boolean mFading;
     private boolean mIsBouncer;
     private boolean mIsBiometricRunning;
     private boolean mIsCircleShowing;
@@ -416,7 +414,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     }
 
     public void dispatchPress() {
-        if (mFading) return;
         IFingerprintInscreen daemon = getFingerprintInScreenDaemon();
         try {
             daemon.onPress();
@@ -453,7 +450,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     }
 
     public void showCircle() {
-        if (mFading) return;
         mIsCircleShowing = true;
 
         setKeepScreenOn(true);
@@ -505,29 +501,17 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         updatePosition();
 
         setVisibility(View.VISIBLE);
-        animate().withStartAction(() -> mFading = true)
-                .alpha(mIsDreaming ? 0.5f : 1.0f)
-                .setDuration(FADE_ANIM_DURATION)
-                .withEndAction(() -> mFading = false)
-                .start();
         dispatchShow();
     }
 
     public void hide() {
-        animate().withStartAction(() -> mFading = true)
-                .alpha(0)
-                .setDuration(FADE_ANIM_DURATION)
-                .withEndAction(() -> {
-                    setVisibility(View.GONE);
-                    mFading = false;
-                })
-                .start();
+        setVisibility(View.GONE);
         hideCircle();
         dispatchHide();
     }
 
     private void updateAlpha() {
-        setAlpha(mIsDreaming ? 0.5f : 1.0f);
+        setAlpha(mIsDreaming ? 1.0f : 1.0f);
     }
 
     private void updatePosition() {
