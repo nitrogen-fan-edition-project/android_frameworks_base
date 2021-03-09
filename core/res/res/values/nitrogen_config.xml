@@ -58,9 +58,6 @@
     <!-- Whether to show emergency button in power menu -->
     <bool name="config_showEmergencyButtonInPowerMenu">false</bool>
 
-    <!-- Whether to show a custom view for FOD -->
-    <bool name="config_needCustomFODView">false</bool>
-
     <!-- The list of components which should be automatically disabled for a specific device.
          Note: this MUST not be used to randomly disable components, ask for approval first! -->
     <string-array name="config_deviceDisabledComponents" translatable="false">
