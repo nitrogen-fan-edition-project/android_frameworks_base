@@ -78,6 +78,7 @@ import com.android.systemui.SystemUIFactory;
 import com.android.systemui.shared.system.SysUiStatsLog;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.util.InjectionInflationController;
+import com.android.internal.custom.app.LineageContextConstants;
 
 import java.util.List;
 
@@ -124,6 +125,7 @@ public class KeyguardSecurityContainer extends FrameLayout implements KeyguardSe
     private InjectionInflationController mInjectionInflationController;
     private boolean mSwipeUpToRetry;
     private AdminSecondaryLockScreenController mSecondaryLockScreenController;
+    private boolean mHasFod;
 
     private final ViewConfiguration mViewConfiguration;
     private final SpringAnimation mSpringAnimation;
@@ -517,8 +519,10 @@ public class KeyguardSecurityContainer extends FrameLayout implements KeyguardSe
 
         // Consume bottom insets because we're setting the padding locally (for IME and navbar.)
         int inset;
-        int minBottomMargin = getResources().getDimensionPixelSize(
-                R.dimen.kg_security_container_min_bottom_margin);
+        int minBottomMargin = mHasFod && !mUpdateMonitor.userNeedsStrongAuth() &&
+                mUpdateMonitor.isFingerprintDetectionRunning() ?
+                        getResources().getDimensionPixelSize(
+                                R.dimen.kg_security_container_min_bottom_margin) : 0;
 
         if (sNewInsetsMode == NEW_INSETS_MODE_FULL) {
             int bottomInset = insets.getInsetsIgnoringVisibility(systemBars()).bottom;
