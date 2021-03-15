@@ -34,6 +34,7 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.statusbar.notification.row.ExpandableView;
 
 import com.android.internal.util.nitrogen.NitrogenUtils;
+import com.android.internal.util.hwkeys.ActionUtils;
 
 /**
  * A utility class to enable the downward swipe on the lockscreen to go to the full shade and expand
@@ -85,7 +86,7 @@ public class DragDownHelper implements Gefingerpoken {
         mGoToSleep = new Runnable() {
             @Override
             public void run() {
-                NitrogenUtils.switchScreenOff(context);
+                ActionUtils.switchScreenOff(context);
             }
         };
     }

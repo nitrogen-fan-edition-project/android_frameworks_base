@@ -118,6 +118,7 @@ import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.util.InjectionInflationController;
 
 import com.android.internal.util.nitrogen.NitrogenUtils;
+import com.android.internal.util.hwkeys.ActionUtils;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -565,7 +566,7 @@ public class NotificationPanelViewController extends PanelViewController {
         mDoubleTapGesture = new GestureDetector(mView.getContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                NitrogenUtils.switchScreenOff(mView.getContext());
+                ActionUtils.switchScreenOff(mView.getContext());
                 // quick pulldown can trigger those values
                 // on double tap - so reset them
                 mQsExpandImmediate = false;
@@ -578,7 +579,7 @@ public class NotificationPanelViewController extends PanelViewController {
                 new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                NitrogenUtils.switchScreenOff(mView.getContext());
+                ActionUtils.switchScreenOff(mView.getContext());
                 return true;
             }
         });

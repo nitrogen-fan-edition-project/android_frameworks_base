@@ -212,6 +212,7 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.util.hwkeys.ActionHandler;
 import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.internal.util.nitrogen.NitrogenUtils;
+import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.internal.util.ArrayUtils;
 import com.android.server.ExtconStateObserver;
 import com.android.server.ExtconUEventObserver;
@@ -2008,7 +2009,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mSwipeToScreenshot = new SwipeToScreenshotListener(context, new SwipeToScreenshotListener.Callbacks() {
             @Override
             public void onSwipeThreeFinger() {
-                NitrogenUtils.takeScreenshot(true);
+                ActionUtils.takeScreenshot(true);
             }
         });
         mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
