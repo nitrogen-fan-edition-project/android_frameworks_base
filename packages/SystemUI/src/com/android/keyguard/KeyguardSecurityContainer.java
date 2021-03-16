@@ -519,10 +519,8 @@ public class KeyguardSecurityContainer extends FrameLayout implements KeyguardSe
 
         // Consume bottom insets because we're setting the padding locally (for IME and navbar.)
         int inset;
-        int minBottomMargin = mHasFod && !mUpdateMonitor.userNeedsStrongAuth() &&
-                mUpdateMonitor.isFingerprintDetectionRunning() ?
-                        getResources().getDimensionPixelSize(
-                                R.dimen.kg_security_container_min_bottom_margin) : 0;
+        int minBottomMargin = getResources().getDimensionPixelSize(
+                R.dimen.kg_security_container_min_bottom_margin);
 
         if (sNewInsetsMode == NEW_INSETS_MODE_FULL) {
             int bottomInset = insets.getInsetsIgnoringVisibility(systemBars()).bottom;
