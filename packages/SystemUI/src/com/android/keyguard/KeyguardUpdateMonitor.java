@@ -2214,11 +2214,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         }
     }
 
-    private boolean isFaceAuthOnlyOnSecurityView() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.FACE_UNLOCK_ALWAYS_REQUIRE_SWIPE, 0) != 0;
-    }
-
     private boolean isDeviceProvisionedInSettingsDb() {
         return Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.DEVICE_PROVISIONED, 0) != 0;
