@@ -289,7 +289,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
     private boolean mLockIconPressed;
     private int mActiveMobileDataSubscription = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private final Executor mBackgroundExecutor;
-    private final boolean mFaceAuthOnlyOnSecurityView;
 
     private final boolean mFingerprintWakeAndUnlock;
 
