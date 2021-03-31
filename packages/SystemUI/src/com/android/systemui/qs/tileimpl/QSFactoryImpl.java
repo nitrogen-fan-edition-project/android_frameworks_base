@@ -27,6 +27,7 @@ import com.android.systemui.plugins.qs.QSTileView;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.external.CustomTile;
 import com.android.systemui.qs.tiles.AirplaneModeTile;
+import com.android.systemui.qs.tiles.AODTile;
 import com.android.systemui.qs.tiles.BatterySaverTile;
 import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CastTile;
@@ -102,6 +103,7 @@ public class QSFactoryImpl implements QSFactory {
      private final Provider<DataSwitchTile> mDataSwitchTileProvider;
      private final Provider<CompassTile> mCompassTileProvider;
      private final Provider<SyncTile> mSyncTileProvider;
+    private final Provider<AODTile> mAODTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
 
@@ -135,9 +137,10 @@ public class QSFactoryImpl implements QSFactory {
             Provider<HeadsUpTile> headsUpTileProvider,
             Provider<HWKeysTile> hWKeysTileProvider,
             Provider<UsbTetherTile> usbTetherTileProvider,
-	    Provider<CompassTile> compassTileProvider,
+            Provider<CompassTile> compassTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
-            Provider<SyncTile> syncTileProvider) {
+            Provider<SyncTile> syncTileProvider,
+            Provider<AODTile> aodTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -167,9 +170,10 @@ public class QSFactoryImpl implements QSFactory {
         mHeadsUpTileProvider = headsUpTileProvider;
         mHWKeysTileProvider = hWKeysTileProvider;
         mUsbTetherTileProvider = usbTetherTileProvider;
-	mCompassTileProvider = compassTileProvider;
+        mCompassTileProvider = compassTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mSyncTileProvider = syncTileProvider;
+        mAODTileProvider = aodTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -241,8 +245,10 @@ public class QSFactoryImpl implements QSFactory {
                 return mDataSwitchTileProvider.get();
             case "sync":
                 return mSyncTileProvider.get();
-	    case "compass":
+            case "compass":
                 return mCompassTileProvider.get();
+            case "aod":
+                return mAODTileProvider.get();
         }
 
         // Custom tiles
