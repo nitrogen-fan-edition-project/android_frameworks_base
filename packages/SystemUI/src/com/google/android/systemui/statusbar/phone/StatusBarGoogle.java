@@ -22,6 +22,7 @@ import com.android.systemui.statusbar.phone.HeadsUpManagerPhone;
 import com.android.systemui.statusbar.notification.DynamicPrivacyController;
 import com.android.systemui.statusbar.notification.interruption.BypassHeadsUpNotifier;
 import com.android.systemui.plugins.FalsingManager;
+import com.android.systemui.biometrics.FODCircleViewImpl;
 import com.android.systemui.broadcast.BroadcastDispatcher;
 import com.android.systemui.statusbar.policy.RemoteInputQuickSettingsDisabler;
 import com.android.systemui.statusbar.notification.row.NotificationGutsManager;
@@ -184,8 +185,8 @@ public class StatusBarGoogle extends StatusBar {
             KeyguardIndicationController keyguardIndicationController,
             DismissCallbackRegistry dismissCallbackRegistry,
             Lazy<NotificationShadeDepthController> notificationShadeDepthControllerLazy,
-            StatusBarTouchableRegionManager statusBarTouchableRegionManager) {
-
+            StatusBarTouchableRegionManager statusBarTouchableRegionManager,
+            FODCircleViewImpl fodCircleViewImpl) {
         super(context, 
             notificationsController,
             lightBarController,
@@ -264,7 +265,8 @@ public class StatusBarGoogle extends StatusBar {
             keyguardIndicationController,
             dismissCallbackRegistry,
             notificationShadeDepthControllerLazy,
-            statusBarTouchableRegionManager);
+            statusBarTouchableRegionManager,
+            fodCircleViewImpl);
         }
 
     @Override
