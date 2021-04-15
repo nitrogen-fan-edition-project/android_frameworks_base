@@ -5060,28 +5060,6 @@ public final class Settings {
         public static final String HEADS_UP_BLACKLIST_VALUES = "heads_up_blacklist_values";
 
         /**
-         * Number of qs columns on landscape orientation
-         * @hide
-         */
-        public static final String OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE = "qs_layout_columns_landscape";
-
-         /**
-         * @hide
-         */
-        public static final String OMNI_QS_LAYOUT_COLUMNS = "qs_layout_columns";
-
-        /**
-         * Whether to display qs tile titles in the qs panel
-         * @hide
-         */
-        public static final String OMNI_QS_TILE_TITLE_VISIBILITY = "qs_tile_title_visibility";
-
-        /**
-         * @hide
-         */
-        public static final String OMNI_QS_LAYOUT_ROWS = "qs_layout_rows";
-
-        /**
          * Number of qs columns on quickbar
          * @hide
          */
@@ -5570,10 +5548,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
             PRIVATE_SETTINGS.add(HEADS_UP_STOPLIST_VALUES);
             PRIVATE_SETTINGS.add(HEADS_UP_BLACKLIST_VALUES);
-            PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE);
-            PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_COLUMNS);
-            PRIVATE_SETTINGS.add(OMNI_QS_TILE_TITLE_VISIBILITY);
-            PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_ROWS);
             PRIVATE_SETTINGS.add(FINGERPRINT_SUCCESS_VIB);
             PRIVATE_SETTINGS.add(QS_QUICKBAR_COLUMNS);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
