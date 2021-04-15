@@ -4845,6 +4845,12 @@ public final class Settings {
          * @hide
          */
         public static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
+		
+		/**
+         * Whether to display qs tile titles in the qs panel
+         * @hide
+         */
+        public static final String QS_TILE_TITLE_VISIBILITY = "qs_tile_title_visibility";
 
         /** some devices have a extra hw button e.g. n3 on the back on the
          * fingerprint sensor. allow mapping button to key
