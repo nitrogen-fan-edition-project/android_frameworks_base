@@ -24,12 +24,10 @@ public class DescendantSeamlessClockSwitch {
     private static final String[] CLOCK_FACES = {
         "com.android.keyguard.clock.DefaultClockController",
         "com.android.keyguard.clock.AnalogClockController",
-        "com.android.keyguard.clock.TypeClockController",
-        "com.android.keyguard.clock.IDEClockController",
-        "com.android.keyguard.clock.SammyClockController",
-        "com.android.keyguard.clock.FluidClockController",
         "com.android.keyguard.clock.BinaryClockController",
-        "com.android.keyguard.clock.ShapeShiftClockController"
+        "com.android.keyguard.clock.SammyClockController",
+        "com.android.keyguard.clock.IDEClockController",
+        "com.android.keyguard.clock.TypeClockController"
     };
 
     public static int getCurrentPosition(String currentClockFace) {
