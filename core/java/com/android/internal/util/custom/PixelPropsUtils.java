@@ -29,6 +29,7 @@ public class PixelPropsUtils {
     private static final boolean DEBUG = false;
 
     private static final Map<String, Object> propsToChange;
+    private static final Map<String, Object> propsToChangePixel2;
     private static final Map<String, Object> propsToChangePixel3XL;
     private static final Map<String, Object> propsToChangeOGPixelXL;
 
@@ -52,8 +53,11 @@ public class PixelPropsUtils {
             "com.google.android.apps.turbo",
             "com.google.android.apps.wallpaper",
             "com.google.android.apps.maps",
-            "com.google.android.gms",
             "com.google.android.apps.nexuslauncher"
+    };
+
+    private static final String[] packagesToChangePixel2 = {
+            "com.google.android.gms"
     };
 
     private static final String[] packagesToChangePixel3XL = {
@@ -94,6 +98,13 @@ public class PixelPropsUtils {
         propsToChangeOGPixelXL.put("PRODUCT", "marlin");
         propsToChangeOGPixelXL.put("MODEL", "Pixel XL");
         propsToChangeOGPixelXL.put("FINGERPRINT", "google/marlin/marlin:10/QP1A.191005.007.A3/5972272:user/release-keys");
+        propsToChangePixel2 = new HashMap<>();
+        propsToChangePixel2.put("BRAND", "google");
+        propsToChangePixel2.put("MANUFACTURER", "Google");
+        propsToChangePixel2.put("DEVICE", "walleye");
+        propsToChangePixel2.put("PRODUCT", "walleye");
+        propsToChangePixel2.put("MODEL", "Pixel 2");
+        propsToChangePixel2.put("FINGERPRINT", "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys");
     }
 
     public static void setProps(String packageName) {
@@ -110,6 +121,18 @@ public class PixelPropsUtils {
                 setPropValue(key, value);
             }
         }
+
+        if (Arrays.asList(packagesToChangePixel2).contains(packageName)){
+            if (DEBUG){
+                Log.d(TAG, "Defining props for: " + packageName);
+            }
+            for (Map.Entry<String, Object> prop : propsToChangePixel2.entrySet()) {
+                String key = prop.getKey();
+                Object value = prop.getValue();
+                setPropValue(key, value);
+            }
+        }
+
         if (Arrays.asList(packagesToChangePixel3XL).contains(packageName)){
             if (DEBUG){
                 Log.d(TAG, "Defining props for: " + packageName);
